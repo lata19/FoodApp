@@ -104,7 +104,7 @@ def db_update_recipe(
     photo,
 ):
     with Session(bind=db_engine) as session:
-        recipe = session.query(Recipe).filter(Recipe.id == id).one()
+        recipe = session.query(Recipe).filter(Recipe.id == id)
         recipe.update(
             {
                 "name": name,

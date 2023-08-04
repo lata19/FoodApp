@@ -305,7 +305,9 @@ class Recipe:
 
         self.update_button_var = ctk.StringVar(value="Ažuriraj")
         update_button = ctk.CTkButton(
-            buttons_frame, textvariable=self.update_button_var
+            buttons_frame,
+            textvariable=self.update_button_var,
+            command=self.update_recipe,
         )
         update_button.grid(column=0, row=1, padx=10, pady=10, ipadx=10)
 
@@ -401,6 +403,22 @@ class Recipe:
             self.fat_entry.configure(state="disabled")
             self.prep_time_entry.configure(state="disabled")
             self.category_optionmenu.configure(state="disabled")
+
+    def update_recipe(self):
+        category_id = db_get_category_by_name(self.category_optionmenu.get())
+        db_update_recipe(
+            self.recipe.id,
+            self.name_entry.get(),
+            self.staple_food_entry.get(),
+            self.ingridients_textbox.get(1.0, ctk.END),
+            self.preparation_textbox.get(1.0, ctk.END),
+            self.protein_entry.get(),
+            self.carb_entry.get(),
+            self.fat_entry.get(),
+            self.prep_time_entry.get(),
+            category_id,
+            self.recipe.photo,
+        )
 
     class SingleRecipe:
         def __init__(self, main, parent_frame, recipe, name, row):

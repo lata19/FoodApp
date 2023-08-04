@@ -1,0 +1,24 @@
+menu.png - https://www.flaticon.com/free-icon/menu_1046747?term=food&page=2&position=11&origin=search&related_id=1046747
+back_button - https://www.flaticon.com/free-icon/back-button_93634?term=back&page=1&position=6&origin=search&related_id=93634
+back_button1 - https://www.flaticon.com/free-icon/left-arrow_8805215?term=back&page=2&position=89&origin=search&related_id=8805215
+
+recipe - https://www.flaticon.com/free-icon/recipe-book_4670848?term=recipe&page=1&position=30&origin=search&related_id=4670848
+recipe1 - https://www.flaticon.com/free-icon/recipe_1041373?term=recipe&page=1&position=7&origin=search&related_id=1041373
+
+breakfast - https://www.flaticon.com/free-icon/breakfast_8978070?term=breakfast&page=1&position=7&origin=search&related_id=8978070
+breakfast1 - https://www.flaticon.com/free-icon/breakfast_4377016?term=breakfast&page=1&position=21&origin=search&related_id=4377016
+
+lunch - https://www.flaticon.com/free-icon/meal_3280084?term=lunch&page=1&position=1&origin=search&related_id=3280084
+lunch1 - https://www.flaticon.com/free-icon/breakfast_4252423?term=lunch&page=1&position=47&origin=search&related_id=4252423
+
+dinner - https://www.flaticon.com/free-icon/restaurant_3437521?term=dinner&page=1&position=76&origin=search&related_id=3437521
+dinner1 - https://www.flaticon.com/free-icon/table_2251855?term=dinner&page=1&position=64&origin=search&related_id=2251855
+
+desert - https://www.flaticon.com/free-icon/cake_1588999?term=desert+food&page=1&position=3&origin=search&related_id=1588999
+desert1 - https://www.flaticon.com/free-icon/cake_1588897?term=desert+food&page=1&position=5&origin=search&related_id=1588897
+
+add - https://www.flaticon.com/free-icon/add_992651?term=add&page=1&position=1&origin=search&related_id=992651
+add1 - https://www.flaticon.com/free-icon/plus_10257707?k=1688824082438&sign-up=google
+
+random - https://www.flaticon.com/free-icon/random_2989898?term=random&page=1&position=1&origin=search&related_id=2989898
+random1 - https://www.flaticon.com/free-icon/shuffle_724868?term=random&page=1&position=42&origin=search&related_id=724868

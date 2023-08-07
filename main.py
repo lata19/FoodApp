@@ -10,6 +10,7 @@ from Screens import new_recipe, recipe
 class FoodApp(ctk.CTk):
     def __init__(self, fg_color: str | Tuple[str, str] | None = None, **kwargs):
         super().__init__(fg_color, **kwargs)
+        self.configure(fg_color=("#F2F2F2", "#363537"))
         self.font = ctk.CTkFont("Rockwell")
         self.geometry("800x600")
         self.iconbitmap("Foto/menu.ico")
@@ -66,7 +67,7 @@ class FoodApp(ctk.CTk):
         start_screen_frame.grid_rowconfigure(1, weight=5)
 
         # Header frame
-        header_frame = ctk.CTkFrame(start_screen_frame)
+        header_frame = ctk.CTkFrame(start_screen_frame, fg_color=("#363537"))
         header_frame.grid(column=0, row=0, sticky="ew", pady=0)
         header_frame.columnconfigure(0, weight=1)
         header_frame.rowconfigure(0, weight=1)
@@ -76,17 +77,19 @@ class FoodApp(ctk.CTk):
             dark_image=Image.open("Foto/recipe.png"),
             size=(175, 175),
         )
-        logo_label = ctk.CTkLabel(header_frame, image=logo_image, text="")
+        logo_label = ctk.CTkLabel(
+            header_frame, image=logo_image, text="", fg_color=("#363537")
+        )
         logo_label.grid(column=0, row=0, padx=25, pady=25, sticky="ew")
 
         # Main menu frame
-        main_menu_frame = ctk.CTkFrame(start_screen_frame)
+        main_menu_frame = ctk.CTkFrame(start_screen_frame, fg_color=("#474647"))
         main_menu_frame.grid(column=0, row=1, sticky="nsew")
         main_menu_frame.columnconfigure(0, weight=1)
         main_menu_frame.rowconfigure(0, weight=1)
 
         # Buttons frame
-        buttons_frame = ctk.CTkFrame(main_menu_frame)
+        buttons_frame = ctk.CTkFrame(main_menu_frame, fg_color=("#363537"))
         buttons_frame.grid(column=0, row=0, sticky="nsew")
         buttons_frame.columnconfigure((0, 1, 2, 3, 4), weight=1)
         buttons_frame.rowconfigure((0, 1), weight=1)
@@ -103,6 +106,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.breakfast_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.breakfast_button_var.get()),
+            fg_color=("#474647"),
+            hover_color=("#363537"),
+            text_color=("#F1533A"),
         )
         breakfast_button.grid(column=0, row=0, padx=10, pady=10, ipadx=10)
 
@@ -118,6 +124,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.lunch_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.lunch_button_var.get()),
+            fg_color=("#474647"),
+            hover_color=("#363537"),
+            text_color=("#F1533A"),
         )
         lunch_button.grid(column=1, row=0, padx=10, pady=10, ipadx=10)
 
@@ -133,6 +142,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.snack_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.snack_button_var.get()),
+            fg_color=("#474647"),
+            hover_color=("#363537"),
+            text_color=("#F1533A"),
         )
         snack_button.grid(column=2, row=0, padx=10, pady=10, ipadx=10)
 
@@ -148,6 +160,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.dinner_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.dinner_button_var.get()),
+            fg_color=("#474647"),
+            hover_color=("#363537"),
+            text_color=("#F1533A"),
         )
         dinner_button.grid(column=3, row=0, padx=10, pady=10, ipadx=10)
 
@@ -163,6 +178,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.desert_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.desert_button_var.get()),
+            fg_color=("#474647"),
+            hover_color=("#363537"),
+            text_color=("#F1533A"),
         )
         desert_button.grid(column=4, row=0, padx=10, pady=10, ipadx=10)
 
@@ -178,6 +196,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.new_recipe_button_var,
             compound="top",
             command=lambda: self.create_new_screen("new_recipe"),
+            fg_color=("#474647"),
+            hover_color=("#363537"),
+            text_color=("#F1533A"),
         )
         new_recipe_button.grid(column=1, row=1, padx=10, pady=10, ipadx=10)
 
@@ -192,20 +213,30 @@ class FoodApp(ctk.CTk):
             image=random_recipe_logo,
             textvariable=self.random_recipe_button_var,
             compound="top",
+            fg_color=("#474647"),
+            hover_color=("#363537"),
+            text_color=("#F1533A"),
         )
         random_recipe_button.grid(column=3, row=1, padx=10, pady=10, ipadx=10)
 
         # Footer frame
-        footer_frame = ctk.CTkFrame(start_screen_frame)
-        footer_frame.grid(column=0, row=2, sticky="ew")
+        footer_frame = ctk.CTkFrame(start_screen_frame, height=30, fg_color=("#474647"))
+        footer_frame.grid(column=0, row=2, sticky="nsew")
 
         self.language_optionmenu = ctk.CTkOptionMenu(
             footer_frame,
             variable=self.language_var,
             values=["Hrvatski", "Engleski", "Njemački"],
             command=self.language_change,
+            fg_color=("#363537"),
+            button_color=("#363537"),
+            button_hover_color=("#474647"),
+            text_color=("#F1533A"),
+            dropdown_fg_color=("#474647"),
+            dropdown_text_color=("#F1533A"),
+            dropdown_hover_color=("#363537"),
         )
-        self.language_optionmenu.grid(column=0, row=0, padx=25, sticky="w")
+        self.language_optionmenu.grid(column=0, row=0, padx=25, pady=15, sticky="s")
         self.language_change(language)
 
     def create_new_screen(self, screen):

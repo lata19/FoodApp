@@ -14,6 +14,11 @@ class Recipe:
         self.language = language
         self.meal = meal
         self.language_var = ctk.StringVar(value=self.language)
+        self.first_color = "#363537"
+        self.second_color = "#474647"
+        self.third_color = "#F1533A"
+        self.fourth_color = "#FDBA2A"
+        self.fifth_color = "#FDFDFF"
         self.create_recipe_screen(self.meal)
         self.language_change(self.language, self.all_categories, self.meal)
 
@@ -29,6 +34,7 @@ class Recipe:
                 self.header_label_var.set("Desert")
             elif meal == "Snack":
                 self.header_label_var.set("Snack")
+            self.recipe_list_frame_var.set("Popis recepata")
             self.name_label_var.set("Naziv recepta")
             self.staple_food_label_var.set("Glavna namirnica")
             self.ingridients_label_var.set("Sastojci")
@@ -62,6 +68,7 @@ class Recipe:
                 self.header_label_var.set("Dinner")
             elif meal in ["Desert", "Nachtisch"]:
                 self.header_label_var.set("Desert")
+            self.recipe_list_frame_var.set("List of recipes")
             self.name_label_var.set("Name of the recipe")
             self.staple_food_label_var.set("The main food")
             self.ingridients_label_var.set("Ingredients")
@@ -93,6 +100,7 @@ class Recipe:
                 self.header_label_var.set("Abendessen")
             elif meal in ["Desert", "Nachtisch"]:
                 self.header_label_var.set("Nachtisch")
+            self.recipe_list_frame_var.set("Liste der Rezepte")
             self.name_label_var.set("Name des Rezepts")
             self.staple_food_label_var.set("Das Hauptessen")
             self.ingridients_label_var.set("Zutaten")
@@ -121,28 +129,34 @@ class Recipe:
             self.create_info_frame(self.recipe, self.language_var.get())
 
     def create_recipe_screen(self, meal):
-        recipe_frame = ctk.CTkFrame(self.main)
+        recipe_frame = ctk.CTkFrame(self.main, fg_color=(self.first_color))
         recipe_frame.grid(column=0, row=0, sticky="nsew")
         recipe_frame.columnconfigure(0, weight=1)
         recipe_frame.rowconfigure((0, 2), weight=1)
         recipe_frame.rowconfigure(1, weight=10)
 
         # Header frame
-        header_frame = ctk.CTkFrame(recipe_frame, height=10)
+        header_frame = ctk.CTkFrame(
+            recipe_frame, height=10, fg_color=(self.first_color)
+        )
         header_frame.grid(column=0, row=0, sticky="nsew")
         header_frame.columnconfigure((0, 2), weight=1)
         header_frame.columnconfigure(1, weight=10)
         # header_frame.rowconfigure(0, weight=1)
 
         # Buttons
-        header_buttons_frame = ctk.CTkFrame(header_frame, height=10)
+        header_buttons_frame = ctk.CTkFrame(
+            header_frame, height=10, fg_color=(self.first_color)
+        )
         header_buttons_frame.grid(column=0, row=0, padx=10, pady=10, sticky="nsew")
         back_image = ctk.CTkImage(
             light_image=Image.open("Foto/back_button1.png"),
-            dark_image=Image.open("Foto/back_button.png"),
+            dark_image=Image.open("Foto/back_button1.png"),
             size=(35, 35),
         )
-        back_label = ctk.CTkLabel(header_buttons_frame, image=back_image, text="")
+        back_label = ctk.CTkLabel(
+            header_buttons_frame, image=back_image, text="", fg_color=(self.first_color)
+        )
         back_label.grid(column=0, row=0, padx=5, pady=5)
         back_label.bind(
             "<Button-1>",
@@ -151,26 +165,41 @@ class Recipe:
 
         self.header_label_var = ctk.StringVar(value=meal)
         header_label = ctk.CTkLabel(
-            header_frame, textvariable=self.header_label_var, height=10
+            header_frame,
+            textvariable=self.header_label_var,
+            height=10,
+            fg_color=(self.first_color),
         )
         header_label.grid(column=1, row=0, padx=10, pady=10, sticky="nsew")
 
-        logo_frame = ctk.CTkFrame(header_frame, height=10)
+        logo_frame = ctk.CTkFrame(header_frame, height=10, fg_color=(self.first_color))
         logo_frame.grid(column=2, row=0, padx=10, pady=10, sticky="nsew")
 
         # Main frame
-        main_recipe_frame = ctk.CTkFrame(recipe_frame)
+        main_recipe_frame = ctk.CTkFrame(recipe_frame, fg_color=(self.second_color))
         main_recipe_frame.grid(column=0, row=1, sticky="nsew")
         main_recipe_frame.columnconfigure((0, 1), weight=1)
         main_recipe_frame.columnconfigure((2, 3, 4), weight=2)
         main_recipe_frame.rowconfigure(0, weight=1)
 
         # Recipe list
-        recipe_list_frame = ctk.CTkScrollableFrame(main_recipe_frame)
+        self.recipe_list_frame_var = ctk.StringVar(value="Popis recepata")
+        # TODO staviti na self da se može mijenjati jezik
+        recipe_list_frame = ctk.CTkScrollableFrame(
+            main_recipe_frame,
+            label_text=self.recipe_list_frame_var.get(),
+            fg_color=(self.first_color),
+            scrollbar_fg_color=(self.first_color),
+            scrollbar_button_color=(self.third_color),
+            scrollbar_button_hover_color=(self.fourth_color),
+            label_text_color=(self.third_color),
+        )
         recipe_list_frame.grid(column=0, row=0, columnspan=2, rowspan=9, sticky="nsew")
 
         # Recipe info
-        self.single_recipe_frame = ctk.CTkFrame(main_recipe_frame)
+        self.single_recipe_frame = ctk.CTkFrame(
+            main_recipe_frame, fg_color=(self.second_color)
+        )
         # Photo
         self.photo_label = ctk.CTkLabel(self.single_recipe_frame, text="")
         self.photo_label.grid(
@@ -179,18 +208,26 @@ class Recipe:
 
         self.name_label_var = ctk.StringVar(value="Naziv recepta")
         name_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.name_label_var
+            self.single_recipe_frame,
+            textvariable=self.name_label_var,
+            text_color=(self.third_color),
         )
         name_label.grid(column=2, row=0, padx=5, pady=10)
         self.name_entry_var = ctk.StringVar(value="")
         self.name_entry = ctk.CTkEntry(
-            self.single_recipe_frame, textvariable=self.name_entry_var, state="disabled"
+            self.single_recipe_frame,
+            textvariable=self.name_entry_var,
+            state="disabled",
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
         )
         self.name_entry.grid(column=3, columnspan=2, row=0, padx=5, pady=5, ipadx=25)
 
         self.staple_food_label_var = ctk.StringVar(value="Glavna namirnica")
         staple_food_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.staple_food_label_var
+            self.single_recipe_frame,
+            textvariable=self.staple_food_label_var,
+            text_color=(self.third_color),
         )
         staple_food_label.grid(column=2, row=1, padx=5, pady=10)
         self.staple_food_entry_var = ctk.StringVar(value="")
@@ -198,30 +235,46 @@ class Recipe:
             self.single_recipe_frame,
             textvariable=self.staple_food_entry_var,
             state="disabled",
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
         )
         self.staple_food_entry.grid(column=3, row=1, padx=5, pady=10, ipadx=25)
 
         self.ingridients_label_var = ctk.StringVar(value="Sastojci")
         ingridients_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.ingridients_label_var
+            self.single_recipe_frame,
+            textvariable=self.ingridients_label_var,
+            text_color=(self.third_color),
         )
         ingridients_label.grid(column=0, row=2, padx=10, pady=10)
         self.ingridients_textbox_var = ctk.StringVar(value="")
-        self.ingridients_textbox = ctk.CTkTextbox(self.single_recipe_frame)
+        self.ingridients_textbox = ctk.CTkTextbox(
+            self.single_recipe_frame,
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
+        )
         self.ingridients_textbox.grid(column=1, row=2, rowspan=2, padx=5, pady=10)
 
         self.preparation_label_var = ctk.StringVar(value="Priprema")
         preparation_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.preparation_label_var
+            self.single_recipe_frame,
+            textvariable=self.preparation_label_var,
+            text_color=(self.third_color),
         )
         preparation_label.grid(column=0, row=4, padx=10, pady=10)
         self.preparation_textbox_var = ctk.StringVar(value="")
-        self.preparation_textbox = ctk.CTkTextbox(self.single_recipe_frame)
+        self.preparation_textbox = ctk.CTkTextbox(
+            self.single_recipe_frame,
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
+        )
         self.preparation_textbox.grid(column=1, row=4, rowspan=2, padx=5, pady=10)
 
         self.protein_label_var = ctk.StringVar(value="Proteini")
         protein_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.protein_label_var
+            self.single_recipe_frame,
+            textvariable=self.protein_label_var,
+            text_color=(self.third_color),
         )
         protein_label.grid(column=2, row=2, padx=10, pady=10)
         self.protein_entry_var = ctk.StringVar(value="")
@@ -229,34 +282,50 @@ class Recipe:
             self.single_recipe_frame,
             textvariable=self.protein_entry_var,
             state="disabled",
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
         )
         self.protein_entry.grid(column=3, row=2, padx=5, pady=10, ipadx=25)
 
         self.carb_label_var = ctk.StringVar(value="Ugljikohidrati")
         carb_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.carb_label_var
+            self.single_recipe_frame,
+            textvariable=self.carb_label_var,
+            text_color=(self.third_color),
         )
         carb_label.grid(column=2, row=3, padx=10, pady=10)
         self.carb_entry_var = ctk.StringVar(value="")
         self.carb_entry = ctk.CTkEntry(
-            self.single_recipe_frame, textvariable=self.carb_entry_var, state="disabled"
+            self.single_recipe_frame,
+            textvariable=self.carb_entry_var,
+            state="disabled",
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
         )
         self.carb_entry.grid(column=3, row=3, padx=5, pady=10, ipadx=25)
 
         self.fat_label_var = ctk.StringVar(value="Masti")
         fat_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.fat_label_var
+            self.single_recipe_frame,
+            textvariable=self.fat_label_var,
+            text_color=(self.third_color),
         )
         fat_label.grid(column=2, row=4, padx=10, pady=10)
         self.fat_entry_var = ctk.StringVar(value="")
         self.fat_entry = ctk.CTkEntry(
-            self.single_recipe_frame, textvariable=self.fat_entry_var, state="disabled"
+            self.single_recipe_frame,
+            textvariable=self.fat_entry_var,
+            state="disabled",
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
         )
         self.fat_entry.grid(column=3, row=4, padx=5, pady=10, ipadx=25)
 
         self.prep_time_label_var = ctk.StringVar(value="Vrijeme pripreme")
         prep_time_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.prep_time_label_var
+            self.single_recipe_frame,
+            textvariable=self.prep_time_label_var,
+            text_color=(self.third_color),
         )
         prep_time_label.grid(column=2, row=5, padx=10, pady=10)
         self.prep_time_entry_var = ctk.StringVar(value="")
@@ -264,12 +333,16 @@ class Recipe:
             self.single_recipe_frame,
             textvariable=self.prep_time_entry_var,
             state="disabled",
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
         )
         self.prep_time_entry.grid(column=3, row=5, padx=5, pady=10, ipadx=25)
 
         self.category_label_var = ctk.StringVar(value="Kategorija jela")
         category_label = ctk.CTkLabel(
-            self.single_recipe_frame, textvariable=self.category_label_var
+            self.single_recipe_frame,
+            textvariable=self.category_label_var,
+            text_color=(self.third_color),
         )
         category_label.grid(column=2, row=6, padx=10, pady=10)
 
@@ -285,6 +358,8 @@ class Recipe:
             ],
             variable=self.category_optionmenu_var,
             state="disabled",
+            fg_color=(self.first_color),
+            text_color=(self.third_color),
         )
         self.category_optionmenu.grid(column=3, row=6, padx=5, pady=10, ipadx=25)
 
@@ -405,6 +480,7 @@ class Recipe:
             self.category_optionmenu.configure(state="disabled")
 
     def update_recipe(self):
+        # TODO ako je uredi disabled ispisati poruku da je nemoguće
         category_id = db_get_category_by_name(self.category_optionmenu.get())
         db_update_recipe(
             self.recipe.id,
@@ -427,10 +503,17 @@ class Recipe:
             self.recipe = recipe
             self.name = name
             self.row = row
+            self.first_color = "#363537"
+            self.second_color = "#474647"
+            self.third_color = "#F1533A"
+            self.fourth_color = "#FDBA2A"
+            self.fifth_color = "#FDFDFF"
             self.create_single_recipe()
 
         def create_single_recipe(self):
-            recipe_label = ctk.CTkLabel(self.parent_frame, text=self.name)
+            recipe_label = ctk.CTkLabel(
+                self.parent_frame, text=self.name, text_color=(self.third_color)
+            )
             recipe_label.grid(column=0, row=self.row, padx=5, pady=5, sticky="w")
 
             recipe_label.bind(

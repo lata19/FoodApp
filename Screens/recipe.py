@@ -210,7 +210,7 @@ class Recipe:
         name_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.name_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         name_label.grid(column=2, row=0, padx=5, pady=10)
         self.name_entry_var = ctk.StringVar(value="")
@@ -227,7 +227,7 @@ class Recipe:
         staple_food_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.staple_food_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         staple_food_label.grid(column=2, row=1, padx=5, pady=10)
         self.staple_food_entry_var = ctk.StringVar(value="")
@@ -244,7 +244,7 @@ class Recipe:
         ingridients_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.ingridients_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         ingridients_label.grid(column=0, row=2, padx=10, pady=10)
         self.ingridients_textbox_var = ctk.StringVar(value="")
@@ -259,7 +259,7 @@ class Recipe:
         preparation_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.preparation_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         preparation_label.grid(column=0, row=4, padx=10, pady=10)
         self.preparation_textbox_var = ctk.StringVar(value="")
@@ -274,7 +274,7 @@ class Recipe:
         protein_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.protein_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         protein_label.grid(column=2, row=2, padx=10, pady=10)
         self.protein_entry_var = ctk.StringVar(value="")
@@ -291,7 +291,7 @@ class Recipe:
         carb_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.carb_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         carb_label.grid(column=2, row=3, padx=10, pady=10)
         self.carb_entry_var = ctk.StringVar(value="")
@@ -308,7 +308,7 @@ class Recipe:
         fat_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.fat_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         fat_label.grid(column=2, row=4, padx=10, pady=10)
         self.fat_entry_var = ctk.StringVar(value="")
@@ -325,7 +325,7 @@ class Recipe:
         prep_time_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.prep_time_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         prep_time_label.grid(column=2, row=5, padx=10, pady=10)
         self.prep_time_entry_var = ctk.StringVar(value="")
@@ -342,7 +342,7 @@ class Recipe:
         category_label = ctk.CTkLabel(
             self.single_recipe_frame,
             textvariable=self.category_label_var,
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         category_label.grid(column=2, row=6, padx=10, pady=10)
 
@@ -375,6 +375,8 @@ class Recipe:
             onvalue="on",
             offvalue="off",
             command=self.edit_recipe,
+            progress_color=(self.third_color),
+            button_color=(self.fifth_color),
         )
         edit_switch.grid(column=0, row=0, padx=10, pady=10)
 
@@ -383,12 +385,19 @@ class Recipe:
             buttons_frame,
             textvariable=self.update_button_var,
             command=self.update_recipe,
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=(self.fifth_color),
         )
         update_button.grid(column=0, row=1, padx=10, pady=10, ipadx=10)
 
         self.delete_button_var = ctk.StringVar(value="Izbriši")
         delete_button = ctk.CTkButton(
-            buttons_frame, textvariable=self.delete_button_var
+            buttons_frame,
+            textvariable=self.delete_button_var,
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=(self.first_color),
         )
         delete_button.grid(column=0, row=2, padx=10, pady=10, ipadx=10)
 

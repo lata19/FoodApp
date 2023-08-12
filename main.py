@@ -21,7 +21,7 @@ class FoodApp(ctk.CTk):
         self.first_color = "#363537"
         self.second_color = "#474647"
         self.third_color = "#F1533A"
-        self.fourth_color = "#FDBA2A"
+        self.fourth_color = "#F98828"
         self.fifth_color = "#FDFDFF"
         self.configure(fg_color=(self.second_color))
         self.create_start_screen(self.language_var)
@@ -111,9 +111,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.breakfast_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.breakfast_button_var.get()),
-            fg_color=(self.second_color),
-            hover_color=(self.first_color),
-            text_color=(self.third_color),
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=("black"),
         )
         breakfast_button.grid(column=0, row=0, padx=10, pady=10, ipadx=10)
 
@@ -129,9 +129,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.lunch_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.lunch_button_var.get()),
-            fg_color=(self.second_color),
-            hover_color=(self.first_color),
-            text_color=(self.third_color),
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=("black"),
         )
         lunch_button.grid(column=1, row=0, padx=10, pady=10, ipadx=10)
 
@@ -147,9 +147,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.snack_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.snack_button_var.get()),
-            fg_color=(self.second_color),
-            hover_color=(self.first_color),
-            text_color=(self.third_color),
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=("black"),
         )
         snack_button.grid(column=2, row=0, padx=10, pady=10, ipadx=10)
 
@@ -165,9 +165,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.dinner_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.dinner_button_var.get()),
-            fg_color=(self.second_color),
-            hover_color=(self.first_color),
-            text_color=(self.third_color),
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=("black"),
         )
         dinner_button.grid(column=3, row=0, padx=10, pady=10, ipadx=10)
 
@@ -183,9 +183,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.desert_button_var,
             compound="top",
             command=lambda: self.create_new_screen(self.desert_button_var.get()),
-            fg_color=(self.second_color),
-            hover_color=(self.first_color),
-            text_color=(self.third_color),
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=("black"),
         )
         desert_button.grid(column=4, row=0, padx=10, pady=10, ipadx=10)
 
@@ -201,9 +201,9 @@ class FoodApp(ctk.CTk):
             textvariable=self.new_recipe_button_var,
             compound="top",
             command=lambda: self.create_new_screen("new_recipe"),
-            fg_color=(self.second_color),
-            hover_color=(self.first_color),
-            text_color=(self.third_color),
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=("black"),
         )
         new_recipe_button.grid(column=1, row=1, padx=10, pady=10, ipadx=10)
 
@@ -218,9 +218,9 @@ class FoodApp(ctk.CTk):
             image=random_recipe_logo,
             textvariable=self.random_recipe_button_var,
             compound="top",
-            fg_color=(self.second_color),
-            hover_color=(self.first_color),
-            text_color=(self.third_color),
+            fg_color=(self.third_color),
+            hover_color=(self.fourth_color),
+            text_color=("black"),
         )
         random_recipe_button.grid(column=3, row=1, padx=10, pady=10, ipadx=10)
 

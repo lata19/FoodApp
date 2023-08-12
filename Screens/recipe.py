@@ -17,7 +17,7 @@ class Recipe:
         self.first_color = "#363537"
         self.second_color = "#474647"
         self.third_color = "#F1533A"
-        self.fourth_color = "#FDBA2A"
+        self.fourth_color = "#F98828"
         self.fifth_color = "#FDFDFF"
         self.create_recipe_screen(self.meal)
         self.language_change(self.language, self.all_categories, self.meal)
@@ -219,7 +219,7 @@ class Recipe:
             textvariable=self.name_entry_var,
             state="disabled",
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.name_entry.grid(column=3, columnspan=2, row=0, padx=5, pady=5, ipadx=25)
 
@@ -236,7 +236,7 @@ class Recipe:
             textvariable=self.staple_food_entry_var,
             state="disabled",
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.staple_food_entry.grid(column=3, row=1, padx=5, pady=10, ipadx=25)
 
@@ -251,7 +251,7 @@ class Recipe:
         self.ingridients_textbox = ctk.CTkTextbox(
             self.single_recipe_frame,
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.ingridients_textbox.grid(column=1, row=2, rowspan=2, padx=5, pady=10)
 
@@ -266,7 +266,7 @@ class Recipe:
         self.preparation_textbox = ctk.CTkTextbox(
             self.single_recipe_frame,
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.preparation_textbox.grid(column=1, row=4, rowspan=2, padx=5, pady=10)
 
@@ -283,7 +283,7 @@ class Recipe:
             textvariable=self.protein_entry_var,
             state="disabled",
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.protein_entry.grid(column=3, row=2, padx=5, pady=10, ipadx=25)
 
@@ -300,7 +300,7 @@ class Recipe:
             textvariable=self.carb_entry_var,
             state="disabled",
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.carb_entry.grid(column=3, row=3, padx=5, pady=10, ipadx=25)
 
@@ -317,7 +317,7 @@ class Recipe:
             textvariable=self.fat_entry_var,
             state="disabled",
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.fat_entry.grid(column=3, row=4, padx=5, pady=10, ipadx=25)
 
@@ -334,7 +334,7 @@ class Recipe:
             textvariable=self.prep_time_entry_var,
             state="disabled",
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.prep_time_entry.grid(column=3, row=5, padx=5, pady=10, ipadx=25)
 
@@ -359,7 +359,7 @@ class Recipe:
             variable=self.category_optionmenu_var,
             state="disabled",
             fg_color=(self.first_color),
-            text_color=(self.third_color),
+            text_color=(self.fifth_color),
         )
         self.category_optionmenu.grid(column=3, row=6, padx=5, pady=10, ipadx=25)
 
@@ -397,7 +397,7 @@ class Recipe:
             textvariable=self.delete_button_var,
             fg_color=(self.third_color),
             hover_color=(self.fourth_color),
-            text_color=(self.first_color),
+            text_color=(self.fifth_color),
         )
         delete_button.grid(column=0, row=2, padx=10, pady=10, ipadx=10)
 
@@ -414,6 +414,13 @@ class Recipe:
                 self.all_categories,
                 self.meal,
             ),
+            fg_color=(self.first_color),
+            button_color=(self.first_color),
+            button_hover_color=(self.second_color),
+            text_color=(self.third_color),
+            dropdown_fg_color=(self.second_color),
+            dropdown_text_color=(self.third_color),
+            dropdown_hover_color=(self.first_color),
         )
         self.language_optionmenu.grid(column=0, row=0, padx=25, sticky="w")
 
@@ -521,7 +528,7 @@ class Recipe:
 
         def create_single_recipe(self):
             recipe_label = ctk.CTkLabel(
-                self.parent_frame, text=self.name, text_color=(self.third_color)
+                self.parent_frame, text=self.name, text_color=(self.fifth_color)
             )
             recipe_label.grid(column=0, row=self.row, padx=5, pady=5, sticky="w")
 
